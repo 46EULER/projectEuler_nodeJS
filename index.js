@@ -9,7 +9,7 @@ function padLeadingZeros(num, size) {
 function Question(eulerQNum){
     var questionFileName ='./resultsOfEuler/Q'+padLeadingZeros(eulerQNum,4);
 
-        fs.access(questionFileName+'.js', function(err){
+    return fs.access(questionFileName+'.js', function(err){
             if (err.code == "ENOENT"){
                 return "Question "+eulerQNum+" is not solved yet."
             }else{
