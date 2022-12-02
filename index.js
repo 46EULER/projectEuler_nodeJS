@@ -10,7 +10,7 @@ function Question(eulerQNum){
     var questionFileName ='./resultsOfEuler/Q'+padLeadingZeros(eulerQNum,4);
     
     try {
-        fs.access(questionFileName+'.js', fs.constants.F_OK, (err) => {
+        fs.access(questionFileName+'.js', function(err){
             if (err){
                 return "Question "+eulerQNum+" is not solved yet."
             }else{
