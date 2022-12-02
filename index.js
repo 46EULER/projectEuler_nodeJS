@@ -9,7 +9,7 @@ function padLeadingZeros(num, size) {
 function Question(eulerQNum){
     var questionFileName ='./resultsOfEuler/Q'+padLeadingZeros(eulerQNum,4);
     try {
-        if (fs.existsSync(questionFileName+'.js')) {
+        if (fs.access(questionFileName+'.js')) {
             var resultQ = require(questionFileName);
             return "Answer:\n"+resultQ.answer +"\n\nDescription of question"+ eulerQNum + "\n"+resultQ.questionDescription+"\nhttps://projecteuler.net/problem="+eulerQNum
         } else {
