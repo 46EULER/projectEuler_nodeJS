@@ -1,6 +1,6 @@
 
 function Question(eulerQNum){
-    return "got number:"+ eulerQNum
+    return "test more got number:"+ eulerQNum
 }
 function test(){
     return "got number:"
