@@ -1,5 +1,16 @@
 const fs = require('fs')
 
+function isFileExisted(path_way){
+    return new Promise((resolve,reject) =>{
+        fs.access(path_way, (err)=>{
+            if (err){
+                reject(false);
+            }else{
+                resolve(true);
+            }
+        })
+    })
+}
 
 function padLeadingZeros(num, size) {
     var s = num+"";
@@ -8,16 +19,13 @@ function padLeadingZeros(num, size) {
 }
 function Question(eulerQNum){
     var questionFileName ='./resultsOfEuler/Q'+padLeadingZeros(eulerQNum,4);
-
-    return fs.access(questionFileName+'.js', function(err){
-            if (err.code == "ENOENT"){
-                return "Question "+eulerQNum+" is not solved yet."
-            }else{
-                var resultQ = require(questionFileName);
-                return "Answer:\n"+resultQ.answer +"\n\nDescription of question"+ eulerQNum + "\n"+resultQ.questionDescription+"\nhttps://projecteuler.net/problem="+eulerQNum
-            
-            };
-          });
+    if (isFileExisted(questionFileName+'.js')){
+        var resultQ = require(questionFileName);
+        return "Answer:\n"+resultQ.answer +"\n\nDescription of question"+ eulerQNum + "\n"+resultQ.questionDescription+"\nhttps://projecteuler.net/problem="+eulerQNum
+    
+    }else{
+        return "Question "+eulerQNum+" is not solved yet."
+    }
 
       
     
