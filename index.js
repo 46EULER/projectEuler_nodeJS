@@ -2,5 +2,10 @@
 function Question(eulerQNum){
     return "got number:"+ eulerQNum
 }
-
-module.Question  = Question;
+function test(){
+    return "got number:"
+}
+module.exports  = {
+    Question:Question,
+    test:test
+};
