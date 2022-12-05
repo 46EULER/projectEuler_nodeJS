@@ -32,7 +32,7 @@ function padLeadingZeros(num, size) {
 
 function Question(eulerQNum){
     var questionFileName ='./resultsOfEuler/Q'+padLeadingZeros(eulerQNum,4);
-      if (isFileExisted(questionFileName+'.js')){
+      if (isFileExisted(questionFileName+'.js')===true){
             var resultQ = require(questionFileName);
             return "Answer: \n"+resultQ.answer +"\n\nDescription of question"+ eulerQNum + "\n"+resultQ.questionDescription+"\nhttps://projecteuler.net/problem="+eulerQNum;
         
